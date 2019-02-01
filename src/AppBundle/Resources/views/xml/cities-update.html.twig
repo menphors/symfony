@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <style>
+        #search_form_name{
+            width:88%;
+        }
+        #search_form_submit{
+            position: absolute;
+            margin-top: -49px;
+            margin-left: 630px;
+        }
+        .th {
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>City Lists in Country</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form(form_city_update) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

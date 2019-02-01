@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <style>
+        #search_form_name{
+            width:88%;
+        }
+        #search_form_submit{
+            position: absolute;
+            margin-top: -49px;
+            margin-left: 630px;
+        }
+        .th {
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>City Lists in Country</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{{ path('create_city') }}" class="btn btn-success">Add New City</a>
+            </div>
+            <div class="col-md-9">
+                {{ form_start(search_city) }}
+                {{ form_widget(search_city) }}
+                {{ form_end(search_city) }}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="main-content">
+                    {% for msg in app.session.flashBag.get('error_city') %}
+                        <div class="alert alert-danger">
+                            {{ msg }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="th">CityID</th>
+                            <th class="th">City Name</th>
+                            <th class="th">City ISOCode</th>
+                            <th class="th">City Location</th>
+                            <th class="th">Action</th>
+                        </tr>
+                    </thead>
+                    {#.country.cities#}
+                    {% if(country_info) %}
+                        {% for city in country_info %}
+                        <tbody>
+                        <tr>
+                            <td>{{ city.id }}</td>
+                            <td>{{ city.name }}</td>
+                            <td>{{ city.isoCode }}</td>
+                            <td>{{ city.geoLocation }}</td>
+                            <td align="center">
+                                <a href="{{ path('update_city',{'id':city.id}) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ path('delete_city',{'id':city.id}) }}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

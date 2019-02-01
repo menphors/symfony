@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <style>
+        #search_form_name{
+            width:88%;
+        }
+        #search_form_submit{
+            position: absolute;
+            margin-top: -49px;
+            margin-left: 630px;
+        }
+        .th {
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Create new City</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form(create_city_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
